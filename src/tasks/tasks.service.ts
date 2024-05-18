@@ -35,6 +35,10 @@ export class TasksService {
 
   GetTaskById(id: string): Task {
     const task = this.Tasks.find((task) => id === task.id);
+
+    if (!task) {
+      throw new NotFoundException(`this Id: "${id}" of task not found`);
+    }
     return task;
   }
 
